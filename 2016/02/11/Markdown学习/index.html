@@ -1,0 +1,486 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Markdown学习 | 小伍</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="kongfanwu">
+    
+    <meta name="description" content="Mou
+OverviewMou, the missing Markdown editor for web developers.
+SyntaxStrong and Emphasizestrong or strong ( Cmd + B )
+emphasize or emphasize ( Cmd +">
+    
+    
+    
+    
+    <link rel="alternate" href="https://kongfanwu.github.io" title="小伍" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.png">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="小伍" title="小伍"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小伍">小伍</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">主页</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/11/Markdown学习/" title="Markdown学习" itemprop="url">Markdown学习</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://plus.google.com/google_plus?rel=author" title="kongfanwu" target="_blank" itemprop="author">kongfanwu</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-02-11T15:02:14.000Z" itemprop="datePublished">2016-02-11</time>
+    更新日期:<time datetime="2016-02-11T15:02:14.000Z" itemprop="dateModified">2016-02-11</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mou"><span class="toc-number">1.</span> <span class="toc-text">Mou</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-number">1.1.</span> <span class="toc-text">Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Syntax"><span class="toc-number">1.1.1.</span> <span class="toc-text">Syntax</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Strong_and_Emphasize"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">Strong and Emphasize</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Blockquotes"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Blockquotes</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Links_and_Email"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">Links and Email</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Images"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">Images</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Inline_code_and_Block_code"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">Inline code and Block code</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ordered_Lists"><span class="toc-number">1.1.1.6.</span> <span class="toc-text">Ordered Lists</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Unordered_Lists"><span class="toc-number">1.1.1.7.</span> <span class="toc-text">Unordered Lists</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hard_Linebreak"><span class="toc-number">1.1.1.8.</span> <span class="toc-text">Hard Linebreak</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Horizontal_Rules"><span class="toc-number">1.1.1.9.</span> <span class="toc-text">Horizontal Rules</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Headers"><span class="toc-number">1.1.1.10.</span> <span class="toc-text">Headers</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#This_is_H1"><span class="toc-number">2.</span> <span class="toc-text">This is H1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#This_is_H2"><span class="toc-number">2.1.</span> <span class="toc-text">This is H2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#This_is_H1-1"><span class="toc-number">3.</span> <span class="toc-text">This is H1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#This_is_H2-1"><span class="toc-number">3.1.</span> <span class="toc-text">This is H2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#This_is_H3"><span class="toc-number">3.1.1.</span> <span class="toc-text">This is H3</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#This_is_H4"><span class="toc-number">3.1.1.1.</span> <span class="toc-text">This is H4</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#This_is_H5"><span class="toc-number">3.1.1.1.1.</span> <span class="toc-text">This is H5</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#This_is_H6"><span class="toc-number">3.1.1.1.1.1.</span> <span class="toc-text">This is H6</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Extra_Syntax"><span class="toc-number">3.1.2.</span> <span class="toc-text">Extra Syntax</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Footnotes"><span class="toc-number">3.1.2.1.</span> <span class="toc-text">Footnotes</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Strikethrough"><span class="toc-number">3.1.2.2.</span> <span class="toc-text">Strikethrough</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fenced_Code_Blocks"><span class="toc-number">3.1.2.3.</span> <span class="toc-text">Fenced Code Blocks</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tables"><span class="toc-number">3.1.2.4.</span> <span class="toc-text">Tables</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shortcuts"><span class="toc-number">3.1.3.</span> <span class="toc-text">Shortcuts</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#View"><span class="toc-number">3.1.3.1.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Actions"><span class="toc-number">3.1.3.2.</span> <span class="toc-text">Actions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Edit"><span class="toc-number">3.1.3.3.</span> <span class="toc-text">Edit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Post"><span class="toc-number">3.1.3.4.</span> <span class="toc-text">Post</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Export"><span class="toc-number">3.1.3.5.</span> <span class="toc-text">Export</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#And_more_3F"><span class="toc-number">3.1.4.</span> <span class="toc-text">And more?</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="Mou"><a href="#Mou" class="headerlink" title="Mou"></a>Mou</h1><p><img src="http://25.io/mou/Mou_128.png" alt="Mou icon"></p>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><strong>Mou</strong>, the missing Markdown editor for <em>web developers</em>.</p>
+<h3 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h3><h4 id="Strong_and_Emphasize"><a href="#Strong_and_Emphasize" class="headerlink" title="Strong and Emphasize"></a>Strong and Emphasize</h4><p><strong>strong</strong> or <strong>strong</strong> ( Cmd + B )</p>
+<p><em>emphasize</em> or <em>emphasize</em> ( Cmd + I )</p>
+<p><strong>Sometimes I want a lot of text to be bold.<br>Like, seriously, a <em>LOT</em> of text</strong></p>
+<h4 id="Blockquotes"><a href="#Blockquotes" class="headerlink" title="Blockquotes"></a>Blockquotes</h4><blockquote>
+<p>Right angle brackets &gt; are used for block quotes.</p>
+</blockquote>
+<h4 id="Links_and_Email"><a href="#Links_and_Email" class="headerlink" title="Links and Email"></a>Links and Email</h4><p>An email <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x65;&#x78;&#97;&#x6d;&#112;&#108;&#101;&#64;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#x65;&#x78;&#97;&#x6d;&#112;&#108;&#101;&#64;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a> link.</p>
+<p>Simple inline link <a href="http://chenluois.com" target="_blank" rel="external">http://chenluois.com</a>, another inline link <a href="http://25.io/smaller/" target="_blank" rel="external">Smaller</a>, one more inline link with title <a href="http://resizesafari.com" title="a Safari extension" target="_blank" rel="external">Resize</a>.</p>
+<p>A <a href="http://25.io/mou/" title="Markdown editor on Mac OS X" target="_blank" rel="external">reference style</a> link. Input id, then anywhere in the doc, define the link with corresponding id:</p>
+<p>Titles ( or called tool tips ) in the links are optional.</p>
+<h4 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h4><p>An inline image <img src="http://25.io/smaller/favicon.ico" alt="Smaller icon" title="Title here">, title is optional.</p>
+<p>A <img src="http://resizesafari.com/favicon.ico" alt="Resize icon" title="Title"> reference style image.</p>
+<h4 id="Inline_code_and_Block_code"><a href="#Inline_code_and_Block_code" class="headerlink" title="Inline code and Block code"></a>Inline code and Block code</h4><p>Inline code are surround by <code>backtick</code> key. To create a block code:</p>
+<pre><code>Indent each line by at least 1 tab, or 4 spaces.
+var Mou = exactlyTheAppIwant; 
+</code></pre><h4 id="Ordered_Lists"><a href="#Ordered_Lists" class="headerlink" title="Ordered Lists"></a>Ordered Lists</h4><p>Ordered lists are created using “1.” + Space:</p>
+<ol>
+<li>Ordered list item</li>
+<li>Ordered list item</li>
+<li>Ordered list item</li>
+</ol>
+<h4 id="Unordered_Lists"><a href="#Unordered_Lists" class="headerlink" title="Unordered Lists"></a>Unordered Lists</h4><p>Unordered list are created using “*” + Space:</p>
+<ul>
+<li>Unordered list item</li>
+<li>Unordered list item</li>
+<li>Unordered list item </li>
+</ul>
+<p>Or using “-“ + Space:</p>
+<ul>
+<li>Unordered list item</li>
+<li>Unordered list item</li>
+<li>Unordered list item</li>
+</ul>
+<h4 id="Hard_Linebreak"><a href="#Hard_Linebreak" class="headerlink" title="Hard Linebreak"></a>Hard Linebreak</h4><p>End a line with two or more spaces will create a hard linebreak, called <code>&lt;br /&gt;</code> in HTML. ( Control + Return )<br>Above line ended with 2 spaces.</p>
+<h4 id="Horizontal_Rules"><a href="#Horizontal_Rules" class="headerlink" title="Horizontal Rules"></a>Horizontal Rules</h4><p>Three or more asterisks or dashes:</p>
+<hr>
+<hr>
+<hr>
+<h4 id="Headers"><a href="#Headers" class="headerlink" title="Headers"></a>Headers</h4><p>Setext-style:</p>
+<h1 id="This_is_H1"><a href="#This_is_H1" class="headerlink" title="This is H1"></a>This is H1</h1><h2 id="This_is_H2"><a href="#This_is_H2" class="headerlink" title="This is H2"></a>This is H2</h2><p>atx-style:</p>
+<h1 id="This_is_H1-1"><a href="#This_is_H1-1" class="headerlink" title="This is H1"></a>This is H1</h1><h2 id="This_is_H2-1"><a href="#This_is_H2-1" class="headerlink" title="This is H2"></a>This is H2</h2><h3 id="This_is_H3"><a href="#This_is_H3" class="headerlink" title="This is H3"></a>This is H3</h3><h4 id="This_is_H4"><a href="#This_is_H4" class="headerlink" title="This is H4"></a>This is H4</h4><h5 id="This_is_H5"><a href="#This_is_H5" class="headerlink" title="This is H5"></a>This is H5</h5><h6 id="This_is_H6"><a href="#This_is_H6" class="headerlink" title="This is H6"></a>This is H6</h6><h3 id="Extra_Syntax"><a href="#Extra_Syntax" class="headerlink" title="Extra Syntax"></a>Extra Syntax</h3><h4 id="Footnotes"><a href="#Footnotes" class="headerlink" title="Footnotes"></a>Footnotes</h4><p>Footnotes work mostly like reference-style links. A footnote is made of two things: a marker in the text that will become a superscript number; a footnote definition that will be placed in a list of footnotes at the end of the document. A footnote looks like this:</p>
+<p>That’s some text with a footnote.[^1]</p>
+<p>[^1]: And that’s the footnote.</p>
+<h4 id="Strikethrough"><a href="#Strikethrough" class="headerlink" title="Strikethrough"></a>Strikethrough</h4><p>Wrap with 2 tilde characters:</p>
+<p><del>Strikethrough</del></p>
+<h4 id="Fenced_Code_Blocks"><a href="#Fenced_Code_Blocks" class="headerlink" title="Fenced Code Blocks"></a>Fenced Code Blocks</h4><p>Start with a line containing 3 or more backticks, and ends with the first line with the same number of backticks:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fenced code blocks are like Stardard Markdown&#8217;s regular code&#10;blocks, except that they&#8217;re not indented and instead rely on&#10;a start and end fence lines to delimit the code block.</span><br></pre></td></tr></table></figure>
+<h4 id="Tables"><a href="#Tables" class="headerlink" title="Tables"></a>Tables</h4><p>A simple table looks like this:</p>
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+<th>Third Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+</tbody>
+</table>
+<p>If you wish, you can add a leading and tailing pipe to each line of the table:</p>
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+<th>Third Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+</tbody>
+</table>
+<p>Specify alignment for each column by adding colons to separator lines:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">First Header</th>
+<th style="text-align:center">Second Header</th>
+<th style="text-align:right">Third Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Left</td>
+<td style="text-align:center">Center</td>
+<td style="text-align:right">Right</td>
+</tr>
+<tr>
+<td style="text-align:left">Left</td>
+<td style="text-align:center">Center</td>
+<td style="text-align:right">Right</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Shortcuts"><a href="#Shortcuts" class="headerlink" title="Shortcuts"></a>Shortcuts</h3><h4 id="View"><a href="#View" class="headerlink" title="View"></a>View</h4><ul>
+<li>Toggle live preview: Shift + Cmd + I</li>
+<li>Toggle Words Counter: Shift + Cmd + W</li>
+<li>Toggle Transparent: Shift + Cmd + T</li>
+<li>Toggle Floating: Shift + Cmd + F</li>
+<li>Left/Right = 1/1: Cmd + 0</li>
+<li>Left/Right = 3/1: Cmd + +</li>
+<li>Left/Right = 1/3: Cmd + -</li>
+<li>Toggle Writing orientation: Cmd + L</li>
+<li>Toggle fullscreen: Control + Cmd + F</li>
+</ul>
+<h4 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h4><ul>
+<li>Copy HTML: Option + Cmd + C</li>
+<li>Strong: Select text, Cmd + B</li>
+<li>Emphasize: Select text, Cmd + I</li>
+<li>Inline Code: Select text, Cmd + K</li>
+<li>Strikethrough: Select text, Cmd + U</li>
+<li>Link: Select text, Control + Shift + L</li>
+<li>Image: Select text, Control + Shift + I</li>
+<li>Select Word: Control + Option + W</li>
+<li>Select Line: Shift + Cmd + L</li>
+<li>Select All: Cmd + A</li>
+<li>Deselect All: Cmd + D</li>
+<li>Convert to Uppercase: Select text, Control + U</li>
+<li>Convert to Lowercase: Select text, Control + Shift + U</li>
+<li>Convert to Titlecase: Select text, Control + Option + U</li>
+<li>Convert to List: Select lines, Control + L</li>
+<li>Convert to Blockquote: Select lines, Control + Q</li>
+<li>Convert to H1: Cmd + 1</li>
+<li>Convert to H2: Cmd + 2</li>
+<li>Convert to H3: Cmd + 3</li>
+<li>Convert to H4: Cmd + 4</li>
+<li>Convert to H5: Cmd + 5</li>
+<li>Convert to H6: Cmd + 6</li>
+<li>Convert Spaces to Tabs: Control + [</li>
+<li>Convert Tabs to Spaces: Control + ]</li>
+<li>Insert Current Date: Control + Shift + 1</li>
+<li>Insert Current Time: Control + Shift + 2</li>
+<li>Insert entity &lt;: Control + Shift + ,</li>
+<li>Insert entity &gt;: Control + Shift + .</li>
+<li>Insert entity &amp;: Control + Shift + 7</li>
+<li>Insert entity Space: Control + Shift + Space</li>
+<li>Insert Scriptogr.am Header: Control + Shift + G</li>
+<li>Shift Line Left: Select lines, Cmd + [</li>
+<li>Shift Line Right: Select lines, Cmd + ]</li>
+<li>New Line: Cmd + Return</li>
+<li>Comment: Cmd + /</li>
+<li>Hard Linebreak: Control + Return</li>
+</ul>
+<h4 id="Edit"><a href="#Edit" class="headerlink" title="Edit"></a>Edit</h4><ul>
+<li>Auto complete current word: Esc</li>
+<li>Find: Cmd + F</li>
+<li>Close find bar: Esc</li>
+</ul>
+<h4 id="Post"><a href="#Post" class="headerlink" title="Post"></a>Post</h4><ul>
+<li>Post on Scriptogr.am: Control + Shift + S</li>
+<li>Post on Tumblr: Control + Shift + T</li>
+</ul>
+<h4 id="Export"><a href="#Export" class="headerlink" title="Export"></a>Export</h4><ul>
+<li>Export HTML: Option + Cmd + E</li>
+<li>Export PDF:  Option + Cmd + P</li>
+</ul>
+<h3 id="And_more_3F"><a href="#And_more_3F" class="headerlink" title="And more?"></a>And more?</h3><p>Don’t forget to check Preferences, lots of useful options are there.</p>
+<p>Follow <a href="https://twitter.com/mou" target="_blank" rel="external">@Mou</a> on Twitter for the latest news.</p>
+<p>For feedback, use the menu <code>Help</code> - <code>Send Feedback</code><br><a href="http://ibruce.info/2013/11/26/markdown/" title="不如的博客" target="_blank" rel="external">ibruce博客</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2016/02/11/Markdown学习/" data-title="Markdown学习 | 小伍" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/02/11/hello-world/"  title="Hello World">
+ <strong>NEXT:</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mou"><span class="toc-number">1.</span> <span class="toc-text">Mou</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-number">1.1.</span> <span class="toc-text">Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Syntax"><span class="toc-number">1.1.1.</span> <span class="toc-text">Syntax</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Strong_and_Emphasize"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">Strong and Emphasize</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Blockquotes"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Blockquotes</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Links_and_Email"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">Links and Email</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Images"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">Images</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Inline_code_and_Block_code"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">Inline code and Block code</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ordered_Lists"><span class="toc-number">1.1.1.6.</span> <span class="toc-text">Ordered Lists</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Unordered_Lists"><span class="toc-number">1.1.1.7.</span> <span class="toc-text">Unordered Lists</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hard_Linebreak"><span class="toc-number">1.1.1.8.</span> <span class="toc-text">Hard Linebreak</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Horizontal_Rules"><span class="toc-number">1.1.1.9.</span> <span class="toc-text">Horizontal Rules</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Headers"><span class="toc-number">1.1.1.10.</span> <span class="toc-text">Headers</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#This_is_H1"><span class="toc-number">2.</span> <span class="toc-text">This is H1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#This_is_H2"><span class="toc-number">2.1.</span> <span class="toc-text">This is H2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#This_is_H1-1"><span class="toc-number">3.</span> <span class="toc-text">This is H1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#This_is_H2-1"><span class="toc-number">3.1.</span> <span class="toc-text">This is H2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#This_is_H3"><span class="toc-number">3.1.1.</span> <span class="toc-text">This is H3</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#This_is_H4"><span class="toc-number">3.1.1.1.</span> <span class="toc-text">This is H4</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#This_is_H5"><span class="toc-number">3.1.1.1.1.</span> <span class="toc-text">This is H5</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#This_is_H6"><span class="toc-number">3.1.1.1.1.1.</span> <span class="toc-text">This is H6</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Extra_Syntax"><span class="toc-number">3.1.2.</span> <span class="toc-text">Extra Syntax</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Footnotes"><span class="toc-number">3.1.2.1.</span> <span class="toc-text">Footnotes</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Strikethrough"><span class="toc-number">3.1.2.2.</span> <span class="toc-text">Strikethrough</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fenced_Code_Blocks"><span class="toc-number">3.1.2.3.</span> <span class="toc-text">Fenced Code Blocks</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tables"><span class="toc-number">3.1.2.4.</span> <span class="toc-text">Tables</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shortcuts"><span class="toc-number">3.1.3.</span> <span class="toc-text">Shortcuts</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#View"><span class="toc-number">3.1.3.1.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Actions"><span class="toc-number">3.1.3.2.</span> <span class="toc-text">Actions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Edit"><span class="toc-number">3.1.3.3.</span> <span class="toc-text">Edit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Post"><span class="toc-number">3.1.3.4.</span> <span class="toc-text">Post</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Export"><span class="toc-number">3.1.3.5.</span> <span class="toc-text">Export</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#And_more_3F"><span class="toc-number">3.1.4.</span> <span class="toc-text">And more?</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="https://kongfanwu.github.io" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 小伍 <br/>
+			欢迎来到我的博客，我是iOS开发者，小伍。</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com/kongfan_wu@qq.com" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com/https://github.com/kongfanwu" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://yoursite.com" target="_blank" title="kongfanwu">kongfanwu</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
