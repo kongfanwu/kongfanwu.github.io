@@ -9,9 +9,9 @@
     
     <meta name="author" content="kongfanwu">
     
-    <meta name="description" content="感谢感谢React Native中文社区. 给予的帮助
+    <meta name="description" content="感谢感谢React Native中文社区给予的帮助
 感谢QQ群527104912 给予的帮助
-说起React Native环境搭建，其实认真按照React Native中文社区的操作顺利的话是不会出问题的。我却是那个不幸运者，弄了少说有5个小时的时间。虽然我从事iOS开发已有1年半，却很少用Te">
+内容说起React Native环境搭建，其实认真按照React Native中文社区的操作顺利的话是不会出问题的。我却是那个不幸运者，弄了少说有5个小时的时间。虽然我从事iOS开发已有1年半，却很少用Te">
     
     
     
@@ -75,7 +75,7 @@
     </p>
   <p class="article-time">
     <time datetime="2016-02-13T16:13:07.000Z" itemprop="datePublished">2016-02-14</time>
-    更新日期:<time datetime="2016-02-13T17:10:17.000Z" itemprop="dateModified">2016-02-14</time>
+    更新日期:<time datetime="2016-02-13T17:11:57.000Z" itemprop="dateModified">2016-02-14</time>
     
   </p>
 </header>
@@ -87,10 +87,9 @@
 		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u611F_u8C22"><span class="toc-number">1.</span> <span class="toc-text">感谢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5185_u5BB9"><span class="toc-number">2.</span> <span class="toc-text">内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u603B_u7ED3"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
 		</div>
 		
-		<h2 id="u611F_u8C22"><a href="#u611F_u8C22" class="headerlink" title="感谢"></a>感谢</h2><p>感谢<a href="http://reactnative.cn/docs/getting-started.html#content" title="a Safari extension" target="_blank" rel="external">React Native中文社区</a>.<br> 给予的帮助</p>
+		<h2 id="u611F_u8C22"><a href="#u611F_u8C22" class="headerlink" title="感谢"></a>感谢</h2><p>感谢<a href="http://reactnative.cn/docs/getting-started.html#content" title="a Safari extension" target="_blank" rel="external">React Native中文社区</a>给予的帮助</p>
 <p>感谢QQ群527104912 给予的帮助</p>
-<p>说起React Native环境搭建，其实认真按照<a href="http://reactnative.cn/docs/getting-started.html#content" title="a Safari extension" target="_blank" rel="external">React Native中文社区</a>的操作顺利的话是不会出问题的。我却是那个不幸运者，弄了少说有5个小时的时间。虽然我从事iOS开发已有1年半，却很少用Terminal。</p>
-<h2 id="u5185_u5BB9"><a href="#u5185_u5BB9" class="headerlink" title="内容"></a>内容</h2><p>本文围绕<a href="http://reactnative.cn/docs/getting-started.html#content" title="a Safari extension" target="_blank" rel="external">React Native中文社区</a>来说遇到的问题</p>
+<h2 id="u5185_u5BB9"><a href="#u5185_u5BB9" class="headerlink" title="内容"></a>内容</h2><p>说起React Native环境搭建，其实认真按照<a href="http://reactnative.cn/docs/getting-started.html#content" title="a Safari extension" target="_blank" rel="external">React Native中文社区</a>的操作顺利的话是不会出问题的。我却是那个不幸运者，弄了少说有5个小时的时间。虽然我从事iOS开发已有1年半，却很少用Terminal。<br>本文围绕<a href="http://reactnative.cn/docs/getting-started.html#content" title="a Safari extension" target="_blank" rel="external">React Native中文社区</a>来说遇到的问题</p>
 <ul>
 <li>在【环境需求】里的第三步 按照说明，我并没有安装nvm，最终导致$ react-native init AwesomeProject 生成项目的时候 没有iOS android 这两个文件夹。按照提示，装上就好了。</li>
 <li>装上之后模拟器可以成功运行起来，但是出错了。提示<br>Node server is running and available on the same network - run ‘npm start’ from react-native root<br>原因是我的MAC 8081端口没有打开，因为 AppDelegate.m 里用到了8081端口。打开方式 lsof -Pn  |grep 8081。再次运行就遇到下个错误了。</li>
