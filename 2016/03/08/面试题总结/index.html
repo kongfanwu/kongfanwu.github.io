@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>React Native环境搭建遇到的问题 iOS | 小伍</title>
+    <title>面试题总结 | 小伍</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="kongfanwu">
     
-    <meta name="description" content="感谢感谢React Native中文社区给予的帮助
-感谢QQ群527104912 给予的帮助
-内容说起React Native环境搭建，其实认真按照React Native中文社区的操作顺利的话是不会出问题的。我却是那个不幸运者，弄了少说有5个小时的时间。虽然我从事iOS开发已有1年半，却很少用Te">
+    <meta name="description" content="##前言：整理下面试遇到的题，都是个人整理。不确定对错，仅供参考。
+1 block在调用时，变量的生命周期有哪几种？分别是什么样的？  
+_NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁_NSConcreteGlobalBlock 全局的静态block，不会访问任何">
     
     
     
@@ -67,15 +67,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/02/14/React-Native环境搭建-iOS/" title="React Native环境搭建遇到的问题 iOS" itemprop="url">React Native环境搭建遇到的问题 iOS</a>
+      <a href="/2016/03/08/面试题总结/" title="面试题总结" itemprop="url">面试题总结</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://plus.google.com/google_plus?rel=author" title="kongfanwu" target="_blank" itemprop="author">kongfanwu</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-02-13T16:13:07.000Z" itemprop="datePublished">2016-02-14</time>
-    更新日期:<time datetime="2016-02-14T02:00:13.000Z" itemprop="dateModified">2016-02-14</time>
+    <time datetime="2016-03-08T06:05:32.000Z" itemprop="datePublished">2016-03-08</time>
+    更新日期:<time datetime="2016-03-08T07:07:04.000Z" itemprop="dateModified">2016-03-08</time>
     
   </p>
 </header>
@@ -84,18 +84,13 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u611F_u8C22"><span class="toc-number">1.</span> <span class="toc-text">感谢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5185_u5BB9"><span class="toc-number">2.</span> <span class="toc-text">内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u603B_u7ED3"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+		
 		</div>
 		
-		<h2 id="u611F_u8C22"><a href="#u611F_u8C22" class="headerlink" title="感谢"></a>感谢</h2><p>感谢<a href="http://reactnative.cn/docs/getting-started.html#content" title="a Safari extension" target="_blank" rel="external">React Native中文社区</a>给予的帮助</p>
-<p>感谢QQ群527104912 给予的帮助</p>
-<h2 id="u5185_u5BB9"><a href="#u5185_u5BB9" class="headerlink" title="内容"></a>内容</h2><p>说起React Native环境搭建，其实认真按照<a href="http://reactnative.cn/docs/getting-started.html#content" title="a Safari extension" target="_blank" rel="external">React Native中文社区</a>的操作顺利的话是不会出问题的。我却是那个不幸运者，弄了少说有5个小时的时间。虽然我从事iOS开发已有1年半，却很少用Terminal。<br>本文围绕<a href="http://reactnative.cn/docs/getting-started.html#content" title="a Safari extension" target="_blank" rel="external">React Native中文社区</a>来说遇到的问题</p>
-<ul>
-<li>在【环境需求】里的第三步 按照说明，我并没有安装nvm，最终导致$ react-native init AwesomeProject 生成项目的时候 没有iOS android 这两个文件夹。按照提示，装上就好了。</li>
-<li>装上之后模拟器可以成功运行起来，但是出错了。提示<br>Node server is running and available on the same network - run ‘npm start’ from react-native root<br>原因是我的MAC 8081端口没有打开，因为 AppDelegate.m 里用到了8081端口。打开方式 lsof -Pn  |grep 8081。再次运行就遇到下个错误了。</li>
-<li>具体错误信息看 <a href="http://stackoverflow.com/questions/34975286/reactnativecli-init-helloworld-project-build-error-with-babel-transformerror" target="_blank" rel="external">Stack Overflow</a>上的一位朋友。我按照他的操作之后还是有其他的错误。我在想为什么他的就解决了呢？记得爬博客的时候看到一个人在项目里package.json “react-native”: “^0.19.0”版本号回退成0.17.0就好了。我按照他的操作也该成0.17.0，但又出现了另一个错误。又看了下<a href="http://stackoverflow.com/questions/34975286/reactnativecli-init-helloworld-project-build-error-with-babel-transformerror" target="_blank" rel="external">stackoverflow</a>，他的版本和我的不一样nvm  RNApp  react-native –version<br>react-native-cli: 0.1.10<br>react-native: 0.18.1<br>我也改成0.18.1，（其实我用的是最新版的0.19.0）再次 $npm install  $react-native upgrade 居然神奇的好了。</li>
-</ul>
-<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>我是个小白，第一次写博客，记录下心得，原能帮助大家，如有不足之处请谅解并反馈给我。谢谢!</p>
+		<p>##前言：整理下面试遇到的题，都是个人整理。不确定对错，仅供参考。</p>
+<p>1 block在调用时，变量的生命周期有哪几种？分别是什么样的？  </p>
+<p>_NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁<br>_NSConcreteGlobalBlock 全局的静态block，不会访问任何外部变量<br>_NSConcreteMallocBlock 保存在堆中的block，当引用计数为0时会被销毁<br>局部变量block块被创建时，block被保存到栈中（_NSConcreteStackBlock）。当block作用域结束时，block会被释放掉。<br>全局静态变量blcok块被创建时，blcok被保存到全局静态block(_NSConcreteGlobalBlock)。<br>全局变量block块被创建时，会被从栈上copy到堆上。包括__blcok修饰的对象。</p>
+<p>感谢此片博客<a href="http://www.cocoachina.com/ios/20150106/10850.html" target="_blank" rel="external">http://www.cocoachina.com/ios/20150106/10850.html</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -105,7 +100,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2016/02/14/React-Native环境搭建-iOS/" data-title="React Native环境搭建遇到的问题 iOS | 小伍" data-tsina="null" class="share clearfix">
+  <div data-url="http://yoursite.com/2016/03/08/面试题总结/" data-title="面试题总结 | 小伍" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -114,19 +109,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/03/08/面试题总结/" title="面试题总结">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  面试题总结</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/02/13/年假总结/"  title="年假总结">
+<a href="/2016/02/14/React-Native环境搭建-iOS/"  title="React Native环境搭建遇到的问题 iOS">
  <strong>NEXT:</strong><br/> 
- <span>年假总结
+ <span>React Native环境搭建遇到的问题 iOS
 </span>
 </a>
 </div>
@@ -143,7 +130,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u611F_u8C22"><span class="toc-number">1.</span> <span class="toc-text">感谢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5185_u5BB9"><span class="toc-number">2.</span> <span class="toc-text">内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u603B_u7ED3"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+  
   </div>
 
 <div id="asidepart">
