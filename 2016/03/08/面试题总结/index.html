@@ -74,7 +74,7 @@ _NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁_NSConcrete
     </p>
   <p class="article-time">
     <time datetime="2016-03-08T06:05:32.000Z" itemprop="datePublished">2016-03-08</time>
-    更新日期:<time datetime="2016-03-08T07:20:26.000Z" itemprop="dateModified">2016-03-08</time>
+    更新日期:<time datetime="2016-03-08T07:45:09.000Z" itemprop="dateModified">2016-03-08</time>
     
   </p>
 </header>
@@ -87,7 +87,7 @@ _NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁_NSConcrete
 		</div>
 		
 		<h2 id="u524D_u8A00_uFF1A_u6574_u7406_u4E0B_u9762_u8BD5_u9047_u5230_u7684_u9898_uFF0C_u90FD_u662F_u4E2A_u4EBA_u6574_u7406_u3002_u4E0D_u786E_u5B9A_u5BF9_u9519_uFF0C_u4EC5_u4F9B_u53C2_u8003_u3002"><a href="#u524D_u8A00_uFF1A_u6574_u7406_u4E0B_u9762_u8BD5_u9047_u5230_u7684_u9898_uFF0C_u90FD_u662F_u4E2A_u4EBA_u6574_u7406_u3002_u4E0D_u786E_u5B9A_u5BF9_u9519_uFF0C_u4EC5_u4F9B_u53C2_u8003_u3002" class="headerlink" title="前言：整理下面试遇到的题，都是个人整理。不确定对错，仅供参考。"></a>前言：整理下面试遇到的题，都是个人整理。不确定对错，仅供参考。</h2><p>1 block在调用时，变量的生命周期有哪几种？分别是什么样的？  </p>
-<p>_NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁<br>_NSConcreteGlobalBlock 全局的静态block，不会访问任何外部变量<br>_NSConcreteMallocBlock 保存在堆中的block，当引用计数为0时会被销毁<br>局部变量block块被创建时，block被保存到栈中（_NSConcreteStackBlock）。当block作用域结束时，block会被释放掉。<br>全局静态变量blcok块被创建时，blcok被保存到全局静态block(_NSConcreteGlobalBlock)。<br>全局变量block块被创建时，会被从栈上copy到堆上。包括__blcok修饰的对象。</p>
+<p>_NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁<br>_NSConcreteGlobalBlock 全局的静态block，不会访问任何外部变量<br>_NSConcreteMallocBlock 保存在堆中的block，当引用计数为0时会被销毁<br>局部变量block块被创建时，block被保存到栈中（_NSConcreteStackBlock）。当block作用域结束时，block会被释放掉。<br>全局静态变量blcok块被创建时，blcok被保存到全局静态block(_NSConcreteGlobalBlock)。<br>全局变量block块被创建时，会被从栈上copy到堆上（_NSConcreteMallocBlock）。包括__blcok修饰的对象。</p>
 <p>感谢此片博客<a href="http://www.cocoachina.com/ios/20150106/10850.html" target="_blank" rel="external">http://www.cocoachina.com/ios/20150106/10850.html</a></p>
   
 	</div>
