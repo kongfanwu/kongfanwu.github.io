@@ -76,7 +76,7 @@
     </p>
   <p class="article-time">
     <time datetime="2016-03-22T05:48:38.000Z" itemprop="datePublished">2016-03-22</time>
-    更新日期:<time datetime="2016-03-22T06:30:34.000Z" itemprop="dateModified">2016-03-22</time>
+    更新日期:<time datetime="2016-03-22T07:10:30.000Z" itemprop="dateModified">2016-03-22</time>
     
   </p>
 </header>
@@ -99,7 +99,7 @@
 </ol>
 <hr>
 <p>图片来自 <a href="http://www.cocoachina.com/ios/20151208/14595.html" target="_blank" rel="external">http://www.cocoachina.com/ios/20151208/14595.html</a></p>
-<p><img src="messageTransmit.png" alt="Resize icon"> </p>
+<p><img src="/Users/kongfanwu/Documents/hexo/source/images/messageTransmit.png" alt="Resize icon"> </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;void run (id self, SEL _cmd)&#10;&#123;&#10;    NSLog(@&#34;%@ %s&#34;, self, sel_getName(_cmd));&#10;&#125;&#10;&#10;+ (BOOL)resolveInstanceMethod:(SEL)sel&#10;&#123;&#10;//    if (sel == @selector(run)) &#123;&#10;//        class_addMethod(self, sel, (IMP)run, &#34;v@:&#34;);&#10;//        return YES;&#10;//    &#125;&#10;    return [super resolveInstanceMethod:sel];&#10;&#125;&#10;&#10;&#10;- (id)forwardingTargetForSelector:(SEL)aSelector&#10;&#123;&#10;//    if (aSelector == @selector(run)) &#123;&#10;//        return FWCar.new;&#10;//    &#125;&#10;    return [super forwardingTargetForSelector:aSelector];&#10;&#125;&#10;&#10;- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector&#10;&#123;&#10;    NSString *sel = NSStringFromSelector(aSelector);&#10;    if ([sel isEqualToString:@&#34;run&#34;]) &#123;&#10;        // &#20026;&#36716;&#21457;&#26041;&#27861;&#25163;&#21160;&#29983;&#25104;&#31614;&#21517;&#10;        return [NSMethodSignature signatureWithObjCTypes:&#34;v@:&#34;];&#10;    &#125;&#10;    return [super methodSignatureForSelector:aSelector];&#10;&#125;&#10;&#10;- (void)forwardInvocation:(NSInvocation *)anInvocation&#10;&#123;&#10;    SEL sel = anInvocation.selector;&#10;    FWCar *car = FWCar.new;&#10;    if ([car respondsToSelector:sel]) &#123;&#10;        // &#21796;&#37266;&#36825;&#20010;&#26041;&#27861;&#10;        [anInvocation invokeWithTarget:car];&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
   
 	</div>
