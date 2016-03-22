@@ -4,13 +4,15 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>面试题总结 | 小伍</title>
+    <title>“iOS消息转发” | 小伍</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="kongfanwu">
     
-    <meta name="description" content="前言：整理下面试遇到的题，都是个人整理。不确定对错，仅供参考。1 block在调用时，变量的生命周期有哪几种？分别是什么样的？  
-_NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁_NSConcreteGlobalBlock 全局的静态block，不会访问任何外部变">
+    <meta name="description" content="消息转发这块，我学习了三次。2次看书，1次看博客。每次看的都很明白。但是由于开发中使用很少，好忘。所以这里记录下。方便日后查看。   
+消息转发我分2个阶段。   
+一 这个消息由自己（本类）来响应阶段。
+当向一个A类发送未实现的消息时。A类会调用 + (BOOL)resolveInstanceMe">
     
     
     
@@ -66,15 +68,15 @@ _NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁_NSConcrete
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/08/面试题总结/" title="面试题总结" itemprop="url">面试题总结</a>
+      <a href="/2016/03/22/“iOS消息转发”/" title="“iOS消息转发”" itemprop="url">“iOS消息转发”</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://plus.google.com/google_plus?rel=author" title="kongfanwu" target="_blank" itemprop="author">kongfanwu</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-03-08T06:05:32.000Z" itemprop="datePublished">2016-03-08</time>
-    更新日期:<time datetime="2016-03-08T09:29:32.000Z" itemprop="dateModified">2016-03-08</time>
+    <time datetime="2016-03-22T05:48:38.000Z" itemprop="datePublished">2016-03-22</time>
+    更新日期:<time datetime="2016-03-22T06:27:09.000Z" itemprop="dateModified">2016-03-22</time>
     
   </p>
 </header>
@@ -83,12 +85,22 @@ _NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁_NSConcrete
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u524D_u8A00_uFF1A_u6574_u7406_u4E0B_u9762_u8BD5_u9047_u5230_u7684_u9898_uFF0C_u90FD_u662F_u4E2A_u4EBA_u6574_u7406_u3002_u4E0D_u786E_u5B9A_u5BF9_u9519_uFF0C_u4EC5_u4F9B_u53C2_u8003_u3002"><span class="toc-number">1.</span> <span class="toc-text">前言：整理下面试遇到的题，都是个人整理。不确定对错，仅供参考。</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#u4E00__u8FD9_u4E2A_u6D88_u606F_u7531_u81EA_u5DF1_uFF08_u672C_u7C7B_uFF09_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><span class="toc-number">1.</span> <span class="toc-text">一 这个消息由自己（本类）来响应阶段。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#u4E8C__u7531_u5176_u4ED6_u7C7B_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><span class="toc-number">2.</span> <span class="toc-text">二 由其他类来响应阶段。</span></a></li></ol>
 		</div>
 		
-		<h2 id="u524D_u8A00_uFF1A_u6574_u7406_u4E0B_u9762_u8BD5_u9047_u5230_u7684_u9898_uFF0C_u90FD_u662F_u4E2A_u4EBA_u6574_u7406_u3002_u4E0D_u786E_u5B9A_u5BF9_u9519_uFF0C_u4EC5_u4F9B_u53C2_u8003_u3002"><a href="#u524D_u8A00_uFF1A_u6574_u7406_u4E0B_u9762_u8BD5_u9047_u5230_u7684_u9898_uFF0C_u90FD_u662F_u4E2A_u4EBA_u6574_u7406_u3002_u4E0D_u786E_u5B9A_u5BF9_u9519_uFF0C_u4EC5_u4F9B_u53C2_u8003_u3002" class="headerlink" title="前言：整理下面试遇到的题，都是个人整理。不确定对错，仅供参考。"></a>前言：整理下面试遇到的题，都是个人整理。不确定对错，仅供参考。</h2><p>1 block在调用时，变量的生命周期有哪几种？分别是什么样的？  </p>
-<p>_NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁<br>_NSConcreteGlobalBlock 全局的静态block，不会访问任何外部变量<br>_NSConcreteMallocBlock 保存在堆中的block，当引用计数为0时会被销毁<br>局部变量block块被创建时，block被保存到栈中（_NSConcreteStackBlock）。当block作用域结束时，block会被释放掉。<br>全局静态变量blcok块被创建时，blcok被保存到全局静态block(_NSConcreteGlobalBlock)。<br>全局变量block块被创建时，会被从栈上copy到堆上（_NSConcreteMallocBlock）。包括__blcok修饰的对象。</p>
-<p>感谢此博客<a href="http://www.cocoachina.com/ios/20150106/10850.html" target="_blank" rel="external">http://www.cocoachina.com/ios/20150106/10850.html</a></p>
+		<p>消息转发这块，我学习了三次。2次看书，1次看博客。每次看的都很明白。但是由于开发中使用很少，好忘。所以这里记录下。方便日后查看。   </p>
+<p>消息转发我分2个阶段。   </p>
+<h5 id="u4E00__u8FD9_u4E2A_u6D88_u606F_u7531_u81EA_u5DF1_uFF08_u672C_u7C7B_uFF09_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><a href="#u4E00__u8FD9_u4E2A_u6D88_u606F_u7531_u81EA_u5DF1_uFF08_u672C_u7C7B_uFF09_u6765_u54CD_u5E94_u9636_u6BB5_u3002" class="headerlink" title="一 这个消息由自己（本类）来响应阶段。"></a>一 这个消息由自己（本类）来响应阶段。</h5><ol>
+<li>当向一个A类发送未实现的消息时。A类会调用 + (BOOL)resolveInstanceMethod:(SEL)sel 这个方法，动态的添加一个Method来响应。（添加Method看下边代码）</li>
+</ol>
+<h5 id="u4E8C__u7531_u5176_u4ED6_u7C7B_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><a href="#u4E8C__u7531_u5176_u4ED6_u7C7B_u6765_u54CD_u5E94_u9636_u6BB5_u3002" class="headerlink" title="二 由其他类来响应阶段。"></a>二 由其他类来响应阶段。</h5><ol>
+<li>当 + (BOOL)resolveInstanceMethod:(SEL)sel 方法返回NO,就会调用 - (id)forwardingTargetForSelector:(SEL)aSelector 方法，询问是否交给其他类响应此消息。（添加看下边代码）  </li>
+<li>如果 - (id)forwardingTargetForSelector:(SEL)aSelector 返回nil,调用 - (NSMethodSignature <em>)methodSignatureForSelector:(SEL)aSelector 先进行方法签名，再调用 - (void)forwardInvocation:(NSInvocation </em>)anInvocation 方法进行转发。</li>
+</ol>
+<hr>
+<p>图片来自 <a href="http://www.cocoachina.com/ios/20151208/14595.html" target="_blank" rel="external">http://www.cocoachina.com/ios/20151208/14595.html</a></p>
+<p>A <img src="messageTransmit.png" alt="Resize icon"> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;void run (id self, SEL _cmd)&#10;&#123;&#10;    NSLog(@&#34;%@ %s&#34;, self, sel_getName(_cmd));&#10;&#125;&#10;&#10;+ (BOOL)resolveInstanceMethod:(SEL)sel&#10;&#123;&#10;//    if (sel == @selector(run)) &#123;&#10;//        class_addMethod(self, sel, (IMP)run, &#34;v@:&#34;);&#10;//        return YES;&#10;//    &#125;&#10;    return [super resolveInstanceMethod:sel];&#10;&#125;&#10;&#10;&#10;- (id)forwardingTargetForSelector:(SEL)aSelector&#10;&#123;&#10;//    if (aSelector == @selector(run)) &#123;&#10;//        return FWCar.new;&#10;//    &#125;&#10;    return [super forwardingTargetForSelector:aSelector];&#10;&#125;&#10;&#10;- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector&#10;&#123;&#10;    NSString *sel = NSStringFromSelector(aSelector);&#10;    if ([sel isEqualToString:@&#34;run&#34;]) &#123;&#10;        // &#20026;&#36716;&#21457;&#26041;&#27861;&#25163;&#21160;&#29983;&#25104;&#31614;&#21517;&#10;        return [NSMethodSignature signatureWithObjCTypes:&#34;v@:&#34;];&#10;    &#125;&#10;    return [super methodSignatureForSelector:aSelector];&#10;&#125;&#10;&#10;- (void)forwardInvocation:(NSInvocation *)anInvocation&#10;&#123;&#10;    SEL sel = anInvocation.selector;&#10;    FWCar *car = FWCar.new;&#10;    if ([car respondsToSelector:sel]) &#123;&#10;        // &#21796;&#37266;&#36825;&#20010;&#26041;&#27861;&#10;        [anInvocation invokeWithTarget:car];&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -98,7 +110,7 @@ _NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁_NSConcrete
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2016/03/08/面试题总结/" data-title="面试题总结 | 小伍" data-tsina="null" class="share clearfix">
+  <div data-url="http://yoursite.com/2016/03/22/“iOS消息转发”/" data-title="“iOS消息转发” | 小伍" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -107,19 +119,11 @@ _NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁_NSConcrete
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/03/22/“iOS消息转发”/" title="“iOS消息转发”">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  “iOS消息转发”</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/02/14/React-Native环境搭建-iOS/"  title="React Native环境搭建遇到的问题 iOS">
+<a href="/2016/03/08/面试题总结/"  title="面试题总结">
  <strong>NEXT:</strong><br/> 
- <span>React Native环境搭建遇到的问题 iOS
+ <span>面试题总结
 </span>
 </a>
 </div>
@@ -136,7 +140,7 @@ _NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁_NSConcrete
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u524D_u8A00_uFF1A_u6574_u7406_u4E0B_u9762_u8BD5_u9047_u5230_u7684_u9898_uFF0C_u90FD_u662F_u4E2A_u4EBA_u6574_u7406_u3002_u4E0D_u786E_u5B9A_u5BF9_u9519_uFF0C_u4EC5_u4F9B_u53C2_u8003_u3002"><span class="toc-number">1.</span> <span class="toc-text">前言：整理下面试遇到的题，都是个人整理。不确定对错，仅供参考。</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#u4E00__u8FD9_u4E2A_u6D88_u606F_u7531_u81EA_u5DF1_uFF08_u672C_u7C7B_uFF09_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><span class="toc-number">1.</span> <span class="toc-text">一 这个消息由自己（本类）来响应阶段。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#u4E8C__u7531_u5176_u4ED6_u7C7B_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><span class="toc-number">2.</span> <span class="toc-text">二 由其他类来响应阶段。</span></a></li></ol>
   </div>
 
 <div id="asidepart">
