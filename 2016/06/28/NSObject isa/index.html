@@ -1,0 +1,305 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>NSObject isa | 小伍</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="kongfanwu">
+    
+    <meta name="description" content="一直对NSObject isa理解不是很好，看到个大牛写的博客后，理解很多，在此记录下学习成果，方便日后查看。博客地址 http://xiongzenghuidegithub.github.io/blog/2016/05/17/runtime-part7-object-getclass-yu-obj">
+    
+    
+    
+    
+    <link rel="alternate" href="https://kongfanwu.github.io" title="小伍" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.png">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="小伍" title="小伍"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小伍">小伍</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">主页</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/06/28/NSObject isa/" title="NSObject isa" itemprop="url">NSObject isa</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://plus.google.com/google_plus?rel=author" title="kongfanwu" target="_blank" itemprop="author">kongfanwu</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-06-28T06:56:39.000Z" itemprop="datePublished">2016-06-28</time>
+    更新日期:<time datetime="2016-06-28T06:56:39.000Z" itemprop="dateModified">2016-06-28</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u4E00_u76F4_u5BF9NSObject_isa_u7406_u89E3_u4E0D_u662F_u5F88_u597D_uFF0C_u770B_u5230_u4E2A_u5927_u725B_u5199_u7684_u535A_u5BA2_u540E_uFF0C_u7406_u89E3_u5F88_u591A_uFF0C_u5728_u6B64_u8BB0_u5F55_u4E0B_u5B66_u4E60_u6210_u679C_uFF0C_u65B9_u4FBF_u65E5_u540E_u67E5_u770B_u3002_u535A_u5BA2_u5730_u5740_http_3A//xiongzenghuidegithub-github-io/blog/2016/05/17/runtime-part7-object-getclass-yu-object-class-de-qu-bie/"><span class="toc-number">1.</span> <span class="toc-text">一直对NSObject isa理解不是很好，看到个大牛写的博客后，理解很多，在此记录下学习成果，方便日后查看。博客地址 http://xiongzenghuidegithub.github.io/blog/2016/05/17/runtime-part7-object-getclass-yu-object-class-de-qu-bie/</span></a></li></ol>
+		</div>
+		
+		<h3 id="u4E00_u76F4_u5BF9NSObject_isa_u7406_u89E3_u4E0D_u662F_u5F88_u597D_uFF0C_u770B_u5230_u4E2A_u5927_u725B_u5199_u7684_u535A_u5BA2_u540E_uFF0C_u7406_u89E3_u5F88_u591A_uFF0C_u5728_u6B64_u8BB0_u5F55_u4E0B_u5B66_u4E60_u6210_u679C_uFF0C_u65B9_u4FBF_u65E5_u540E_u67E5_u770B_u3002_u535A_u5BA2_u5730_u5740_http_3A//xiongzenghuidegithub-github-io/blog/2016/05/17/runtime-part7-object-getclass-yu-object-class-de-qu-bie/"><a href="#u4E00_u76F4_u5BF9NSObject_isa_u7406_u89E3_u4E0D_u662F_u5F88_u597D_uFF0C_u770B_u5230_u4E2A_u5927_u725B_u5199_u7684_u535A_u5BA2_u540E_uFF0C_u7406_u89E3_u5F88_u591A_uFF0C_u5728_u6B64_u8BB0_u5F55_u4E0B_u5B66_u4E60_u6210_u679C_uFF0C_u65B9_u4FBF_u65E5_u540E_u67E5_u770B_u3002_u535A_u5BA2_u5730_u5740_http_3A//xiongzenghuidegithub-github-io/blog/2016/05/17/runtime-part7-object-getclass-yu-object-class-de-qu-bie/" class="headerlink" title="一直对NSObject isa理解不是很好，看到个大牛写的博客后，理解很多，在此记录下学习成果，方便日后查看。博客地址 http://xiongzenghuidegithub.github.io/blog/2016/05/17/runtime-part7-object-getclass-yu-object-class-de-qu-bie/"></a>一直对NSObject isa理解不是很好，看到个大牛写的博客后，理解很多，在此记录下学习成果，方便日后查看。博客地址 <a href="http://xiongzenghuidegithub.github.io/blog/2016/05/17/runtime-part7-object-getclass-yu-object-class-de-qu-bie/" target="_blank" rel="external">http://xiongzenghuidegithub.github.io/blog/2016/05/17/runtime-part7-object-getclass-yu-object-class-de-qu-bie/</a></h3><p>isa指向：对象isa-&gt;类,类isa-&gt;元类,元类isa-&gt;根元类,根元类isa-&gt;根元类自己，形成回路<br>super class:对象super class指向对象super class。元类super class指向super class父类。根元类meta root class指向类NSObject</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10; // &#23545;&#35937;&#10; @interface NSObject &#60;NSObject&#62; &#123;&#10; Class isa  OBJC_ISA_AVAILABILITY; // &#25351;&#21521;&#31867;&#10; &#125;&#10; &#10; // &#31867;&#10; struct objc_class &#123;&#10; Class isa  OBJC_ISA_AVAILABILITY; // &#25351;&#21521;&#20803;&#31867;&#10; &#10; #if !__OBJC2__&#10; Class super_class                                        OBJC2_UNAVAILABLE;&#10; const char *name                                         OBJC2_UNAVAILABLE;&#10; long version                                             OBJC2_UNAVAILABLE;&#10; long info                                                OBJC2_UNAVAILABLE;&#10; long instance_size                                       OBJC2_UNAVAILABLE;&#10; struct objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;&#10; struct objc_method_list **methodLists                    OBJC2_UNAVAILABLE;&#10; struct objc_cache *cache                                 OBJC2_UNAVAILABLE;&#10; struct objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;&#10; #endif&#10; &#10; &#125; OBJC2_UNAVAILABLE;&#10; &#10; // &#20803;&#31867;&#10; struct objc_class &#123;&#10; Class isa  OBJC_ISA_AVAILABILITY; // &#25351;&#21521;root&#20803;&#31867;&#10; &#10; #if !__OBJC2__&#10; Class super_class                                        OBJC2_UNAVAILABLE;&#10; const char *name                                         OBJC2_UNAVAILABLE;&#10; long version                                             OBJC2_UNAVAILABLE;&#10; long info                                                OBJC2_UNAVAILABLE;&#10; long instance_size                                       OBJC2_UNAVAILABLE;&#10; struct objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;&#10; struct objc_method_list **methodLists                    OBJC2_UNAVAILABLE;&#10; struct objc_cache *cache                                 OBJC2_UNAVAILABLE;&#10; struct objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;&#10; #endif&#10; &#10; &#125; OBJC2_UNAVAILABLE;&#10; &#10; // root&#20803;&#31867;&#10; struct objc_class &#123;&#10; Class isa  OBJC_ISA_AVAILABILITY; // &#25351;&#21521;&#33258;&#24049;&#10; &#10; #if !__OBJC2__&#10; Class super_class                                        OBJC2_UNAVAILABLE;&#10; const char *name                                         OBJC2_UNAVAILABLE;&#10; long version                                             OBJC2_UNAVAILABLE;&#10; long info                                                OBJC2_UNAVAILABLE;&#10; long instance_size                                       OBJC2_UNAVAILABLE;&#10; struct objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;&#10; struct objc_method_list **methodLists                    OBJC2_UNAVAILABLE;&#10; struct objc_cache *cache                                 OBJC2_UNAVAILABLE;&#10; struct objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;&#10; #endif&#10; &#10; &#125; OBJC2_UNAVAILABLE;&#10; &#10;Person *person = [[Person alloc] init];&#10;NSLog(@&#34;person class:%p&#34;, [person class]); // &#33719;&#21462;&#21040;&#31867; objc_class&#32467;&#26500;&#20307;&#10;NSLog(@&#34;person meta class:%p&#34;, object_getClass(person)); // &#33719;&#21462;&#21040;&#31867; objc_class&#32467;&#26500;&#20307;&#10;NSLog(@&#34;person meta class:%p&#34;, [Person class]); // &#33719;&#21462;&#21040;&#20803;&#31867; objc_class&#32467;&#26500;&#20307;&#10;NSLog(@&#34;person meta class:%p&#34;, object_getClass([person class])); // &#33719;&#21462;&#21040;&#20803;&#31867; objc_class&#32467;&#26500;&#20307;</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2016/06/28/NSObject isa/" data-title="NSObject isa | 小伍" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/06/17/imageNamed方法/"  title="“iOS imageNamed:”">
+ <strong>NEXT:</strong><br/> 
+ <span>“iOS imageNamed:”
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u4E00_u76F4_u5BF9NSObject_isa_u7406_u89E3_u4E0D_u662F_u5F88_u597D_uFF0C_u770B_u5230_u4E2A_u5927_u725B_u5199_u7684_u535A_u5BA2_u540E_uFF0C_u7406_u89E3_u5F88_u591A_uFF0C_u5728_u6B64_u8BB0_u5F55_u4E0B_u5B66_u4E60_u6210_u679C_uFF0C_u65B9_u4FBF_u65E5_u540E_u67E5_u770B_u3002_u535A_u5BA2_u5730_u5740_http_3A//xiongzenghuidegithub-github-io/blog/2016/05/17/runtime-part7-object-getclass-yu-object-class-de-qu-bie/"><span class="toc-number">1.</span> <span class="toc-text">一直对NSObject isa理解不是很好，看到个大牛写的博客后，理解很多，在此记录下学习成果，方便日后查看。博客地址 http://xiongzenghuidegithub.github.io/blog/2016/05/17/runtime-part7-object-getclass-yu-object-class-de-qu-bie/</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="https://kongfanwu.github.io" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 小伍 <br/>
+			欢迎来到我的博客，我是iOS开发者，小伍。</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com/kongfan_wu@qq.com" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com/https://github.com/kongfanwu" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://yoursite.com" target="_blank" title="kongfanwu">kongfanwu</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
