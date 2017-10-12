@@ -4,15 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>“iOS消息转发” | 小伍</title>
+    <title>小伍</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="kongfanwu">
     
-    <meta name="description" content="消息转发这块，我学习了三次。2次看书，1次看博客。每次看的都很明白。但是由于开发中使用很少，好忘。所以这里记录下。方便日后查看。   
-消息转发我分2个阶段。   
-一 这个消息由自己（本类）来响应阶段。
-当向一个A类发送未实现的消息时。A类会调用 + (BOOL)resolveInstanceMe">
+    <meta name="description" content="iOS工程合并Unity导出工程作者：孔凡伍时间：2017.8.3#####1  确定Unity导出工程支持版本以及正确运行。1.1 版本信息unity3D版本:5.6.1.f.1Xcode8iOS 8.0以上
+#####2 导入文件。2.1 将Unity导出的工程文件复制到iOS工程根目录2.2 ">
     
     
     
@@ -68,15 +66,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/22/“iOS消息转发”/" title="“iOS消息转发”" itemprop="url">“iOS消息转发”</a>
+      <a href="/2017/08/05/iOS工程合并Unity导出工程/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
     
       <a href="https://plus.google.com/google_plus?rel=author" title="kongfanwu" target="_blank" itemprop="author">kongfanwu</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-03-22T05:48:38.000Z" itemprop="datePublished">2016-03-22</time>
-    更新日期:<time datetime="2016-03-22T07:23:29.000Z" itemprop="dateModified">2016-03-22</time>
+    <time datetime="2017-08-05T10:59:29.000Z" itemprop="datePublished">2017-08-05</time>
+    更新日期:<time datetime="2017-08-05T10:59:29.000Z" itemprop="dateModified">2017-08-05</time>
     
   </p>
 </header>
@@ -85,22 +83,31 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
-		<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#u4E00__u8FD9_u4E2A_u6D88_u606F_u7531_u81EA_u5DF1_uFF08_u672C_u7C7B_uFF09_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><span class="toc-number">1.</span> <span class="toc-text">一 这个消息由自己（本类）来响应阶段。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#u4E8C__u7531_u5176_u4ED6_u7C7B_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><span class="toc-number">2.</span> <span class="toc-text">二 由其他类来响应阶段。</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS_u5DE5_u7A0B_u5408_u5E76Unity_u5BFC_u51FA_u5DE5_u7A0B"><span class="toc-number">1.</span> <span class="toc-text">iOS工程合并Unity导出工程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u4F5C_u8005_uFF1A_u5B54_u51E1_u4F0D"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">作者：孔凡伍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#u65F6_u95F4_uFF1A2017-8-3"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">时间：2017.8.3</span></a></li></ol></li></ol></li></ol></li></ol>
 		</div>
 		
-		<p>消息转发这块，我学习了三次。2次看书，1次看博客。每次看的都很明白。但是由于开发中使用很少，好忘。所以这里记录下。方便日后查看。   </p>
-<p>消息转发我分2个阶段。   </p>
-<h5 id="u4E00__u8FD9_u4E2A_u6D88_u606F_u7531_u81EA_u5DF1_uFF08_u672C_u7C7B_uFF09_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><a href="#u4E00__u8FD9_u4E2A_u6D88_u606F_u7531_u81EA_u5DF1_uFF08_u672C_u7C7B_uFF09_u6765_u54CD_u5E94_u9636_u6BB5_u3002" class="headerlink" title="一 这个消息由自己（本类）来响应阶段。"></a>一 这个消息由自己（本类）来响应阶段。</h5><ol>
-<li>当向一个A类发送未实现的消息时。A类会调用 + (BOOL)resolveInstanceMethod:(SEL)sel 这个方法，动态的添加一个Method来响应。（添加Method看下边代码）</li>
-</ol>
-<h5 id="u4E8C__u7531_u5176_u4ED6_u7C7B_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><a href="#u4E8C__u7531_u5176_u4ED6_u7C7B_u6765_u54CD_u5E94_u9636_u6BB5_u3002" class="headerlink" title="二 由其他类来响应阶段。"></a>二 由其他类来响应阶段。</h5><ol>
-<li>当 + (BOOL)resolveInstanceMethod:(SEL)sel 方法返回NO,就会调用 - (id)forwardingTargetForSelector:(SEL)aSelector 方法，询问是否交给其他类响应此消息。（添加看下边代码）  </li>
-<li>如果 - (id)forwardingTargetForSelector:(SEL)aSelector 返回nil,调用 - (NSMethodSignature <em>)methodSignatureForSelector:(SEL)aSelector 先进行方法签名，再调用 - (void)forwardInvocation:(NSInvocation </em>)anInvocation 方法进行转发。</li>
-</ol>
-<hr>
-<p>图片来自 <a href="http://www.cocoachina.com/ios/20151208/14595.html" target="_blank" rel="external">http://www.cocoachina.com/ios/20151208/14595.html</a></p>
-<p><img src="http://cc.cocimg.com/api/uploads/20151207/1449456989807643.png" alt="Resize icon"> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;void run (id self, SEL _cmd)&#10;&#123;&#10;    NSLog(@&#34;%@ %s&#34;, self, sel_getName(_cmd));&#10;&#125;&#10;&#10;+ (BOOL)resolveInstanceMethod:(SEL)sel&#10;&#123;&#10;//    if (sel == @selector(run)) &#123;&#10;//        class_addMethod(self, sel, (IMP)run, &#34;v@:&#34;);&#10;//        return YES;&#10;//    &#125;&#10;    return [super resolveInstanceMethod:sel];&#10;&#125;&#10;&#10;&#10;- (id)forwardingTargetForSelector:(SEL)aSelector&#10;&#123;&#10;//    if (aSelector == @selector(run)) &#123;&#10;//        return FWCar.new;&#10;//    &#125;&#10;    return [super forwardingTargetForSelector:aSelector];&#10;&#125;&#10;&#10;- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector&#10;&#123;&#10;    NSString *sel = NSStringFromSelector(aSelector);&#10;    if ([sel isEqualToString:@&#34;run&#34;]) &#123;&#10;        // &#20026;&#36716;&#21457;&#26041;&#27861;&#25163;&#21160;&#29983;&#25104;&#31614;&#21517;&#10;        return [NSMethodSignature signatureWithObjCTypes:&#34;v@:&#34;];&#10;    &#125;&#10;    return [super methodSignatureForSelector:aSelector];&#10;&#125;&#10;&#10;- (void)forwardInvocation:(NSInvocation *)anInvocation&#10;&#123;&#10;    SEL sel = anInvocation.selector;&#10;    FWCar *car = FWCar.new;&#10;    if ([car respondsToSelector:sel]) &#123;&#10;        // &#21796;&#37266;&#36825;&#20010;&#26041;&#27861;&#10;        [anInvocation invokeWithTarget:car];&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+		<h2 id="iOS_u5DE5_u7A0B_u5408_u5E76Unity_u5BFC_u51FA_u5DE5_u7A0B"><a href="#iOS_u5DE5_u7A0B_u5408_u5E76Unity_u5BFC_u51FA_u5DE5_u7A0B" class="headerlink" title="iOS工程合并Unity导出工程"></a>iOS工程合并Unity导出工程</h2><h5 id="u4F5C_u8005_uFF1A_u5B54_u51E1_u4F0D"><a href="#u4F5C_u8005_uFF1A_u5B54_u51E1_u4F0D" class="headerlink" title="作者：孔凡伍"></a>作者：孔凡伍</h5><h5 id="u65F6_u95F4_uFF1A2017-8-3"><a href="#u65F6_u95F4_uFF1A2017-8-3" class="headerlink" title="时间：2017.8.3"></a>时间：2017.8.3</h5><p>#####1  确定Unity导出工程支持版本以及正确运行。<br>1.1 版本信息<br>unity3D版本:5.6.1.f.1<br>Xcode8<br>iOS 8.0以上</p>
+<p>#####2 导入文件。<br>2.1 将Unity导出的工程文件复制到iOS工程根目录<br><img src="http://upload-images.jianshu.io/upload_images/723963-897b143d67dc7c1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-02 17.39.47.png"><br>2.2 导入文件到工程里。classes Libraries虚拟文件夹，Data真实文件夹</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/723963-171a21aa3f305039.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-02 17.43.49.png">   </p>
+<p>#####3 工程配置<br>3.1 Bitcode 可选配置。目前我Unity导出的工程是支持Bitcode的，所以我还是YES<br>3.2 Framework Search Paths / Header Search Paths / Library Search Paths配置方式参考Unity导出的工程</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/723963-39c8bdcfe4b6abfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-02 17.51.00.png"><br>3.3 将Classes文件夹下的Prefix.pch配置到工程的PrefixHeader 下。<br><img src="http://upload-images.jianshu.io/upload_images/723963-983d25b9b39c961c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-02 17.54.59.png"></p>
+<p>#####4 引入Frameworks,参考Unity导出的iOS工程里存在的framework</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/723963-bd73e042abce0c79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-02 17.57.30.png"></p>
+<p>#####5 添加Run Scrip, “$PROJECT_DIR/MapFileParser.sh”  MapFileParser.sh文件要有可运行权限,如果不是，命令行执行 chmod “a+x” MapFileParser.sh即可。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/723963-26eb8bfadb298909.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-02 18.02.49.png"></p>
+<p>#####6 代码层面的修改<br>6.1 将iOS原工程的main.m彻底删除，修改Classes下的main.mm文件，将AppControllerClassName改成原iOS工程AppDelegate<br>6.2 AppDelegate类修改如下</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/723963-8a7f74af2aa7945f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-02 18.10.50.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/723963-26ee0bcfb1247ca0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-02 18.11.07.png"><br>6.2 UnityAppController.h类 GetAppController()方法修改如下</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/723963-f0c28b918eba732e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-02 18.16.46.png"></p>
+<p>#####7 测试，真机运行，随便点击下屏幕即可跳转到Unity程序界面，隐藏调用 AppDelegate类的 hideUnityWindow方法。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/723963-a329e1154a80c6fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-08-02 18.18.07.png"></p>
+<p>#####8 iOS与Unity数据通信<br>8.1 iOS调用Unity方法<br>iOS调用此函数 UnitySendMessage(&lt;#const char <em>obj#&gt;, &lt;#const char </em>method#&gt;, &lt;#const char *msg#&gt;)<br>第一个参数：C#对象名<br>第二个参数：需要调用的方法名<br>第三个参数：方法传的参数<br>实例： UnitySendMessage(“GM”, “MoveControllerInIos”, jsonString.UTF8String);<br>8.2 Unity调用iOS方法<br>在某个类里实现如下方法。此类.m必须改成.mm   </p>
+<pre><code>extern &quot;C&quot; {
+    // u3d退出
+    void _UnityQuit() {
+    }
+}
+</code></pre><p>#####9 源码地址 <a href="https://github.com/kongfanwu/iOSMergeUnity3D" target="_blank" rel="external">https://github.com/kongfanwu/iOSMergeUnity3D</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -110,7 +117,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2016/03/22/“iOS消息转发”/" data-title="“iOS消息转发” | 小伍" data-tsina="null" class="share clearfix">
+  <div data-url="http://yoursite.com/2017/08/05/iOS工程合并Unity导出工程/" data-title="小伍" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -119,19 +126,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/03/22/Markdown学习/" title="Markdown学习">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  Markdown学习</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/03/08/面试题总结/"  title="面试题总结">
+<a href="/2016/11/28/StoryBoard 本地化一种方式/"  title="“StoryBoard 本地化一种方式”">
  <strong>NEXT:</strong><br/> 
- <span>面试题总结
+ <span>“StoryBoard 本地化一种方式”
 </span>
 </a>
 </div>
@@ -148,7 +147,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
-  <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#u4E00__u8FD9_u4E2A_u6D88_u606F_u7531_u81EA_u5DF1_uFF08_u672C_u7C7B_uFF09_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><span class="toc-number">1.</span> <span class="toc-text">一 这个消息由自己（本类）来响应阶段。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#u4E8C__u7531_u5176_u4ED6_u7C7B_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><span class="toc-number">2.</span> <span class="toc-text">二 由其他类来响应阶段。</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS_u5DE5_u7A0B_u5408_u5E76Unity_u5BFC_u51FA_u5DE5_u7A0B"><span class="toc-number">1.</span> <span class="toc-text">iOS工程合并Unity导出工程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u4F5C_u8005_uFF1A_u5B54_u51E1_u4F0D"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">作者：孔凡伍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#u65F6_u95F4_uFF1A2017-8-3"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">时间：2017.8.3</span></a></li></ol></li></ol></li></ol></li></ol>
   </div>
 
 <div id="asidepart">

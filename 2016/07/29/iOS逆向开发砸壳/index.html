@@ -4,15 +4,17 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>“iOS消息转发” | 小伍</title>
+    <title>iOS逆向开发砸壳 | 小伍</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="kongfanwu">
     
-    <meta name="description" content="消息转发这块，我学习了三次。2次看书，1次看博客。每次看的都很明白。但是由于开发中使用很少，好忘。所以这里记录下。方便日后查看。   
-消息转发我分2个阶段。   
-一 这个消息由自己（本类）来响应阶段。
-当向一个A类发送未实现的消息时。A类会调用 + (BOOL)resolveInstanceMe">
+    <meta name="description" content="前言本人小白一个，带着兴趣学习反编译，什么都是爬博客新学习，写此博客只为方便记忆，当然如果能给读者带来收获那就更好了。不妥之处欢迎提出来。   
+达到目的砸壳一个App并导出头文件
+反编译条件
+越狱设备。 （盘古）
+手机安装openSSH, 通过cydia就可以
+Clutch砸壳，通过sftp装到手">
     
     
     
@@ -68,15 +70,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/22/“iOS消息转发”/" title="“iOS消息转发”" itemprop="url">“iOS消息转发”</a>
+      <a href="/2016/07/29/iOS逆向开发砸壳/" title="iOS逆向开发砸壳" itemprop="url">iOS逆向开发砸壳</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://plus.google.com/google_plus?rel=author" title="kongfanwu" target="_blank" itemprop="author">kongfanwu</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-03-22T05:48:38.000Z" itemprop="datePublished">2016-03-22</time>
-    更新日期:<time datetime="2016-03-22T07:23:29.000Z" itemprop="dateModified">2016-03-22</time>
+    <time datetime="2016-07-29T03:54:32.000Z" itemprop="datePublished">2016-07-29</time>
+    更新日期:<time datetime="2017-09-16T02:33:11.000Z" itemprop="dateModified">2017-09-16</time>
     
   </p>
 </header>
@@ -85,22 +87,25 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
-		<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#u4E00__u8FD9_u4E2A_u6D88_u606F_u7531_u81EA_u5DF1_uFF08_u672C_u7C7B_uFF09_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><span class="toc-number">1.</span> <span class="toc-text">一 这个消息由自己（本类）来响应阶段。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#u4E8C__u7531_u5176_u4ED6_u7C7B_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><span class="toc-number">2.</span> <span class="toc-text">二 由其他类来响应阶段。</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u524D_u8A00"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u8FBE_u5230_u76EE_u7684"><span class="toc-number">2.</span> <span class="toc-text">达到目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u53CD_u7F16_u8BD1_u6761_u4EF6"><span class="toc-number">3.</span> <span class="toc-text">反编译条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5B9E_u73B0"><span class="toc-number">4.</span> <span class="toc-text">实现</span></a></li></ol>
 		</div>
 		
-		<p>消息转发这块，我学习了三次。2次看书，1次看博客。每次看的都很明白。但是由于开发中使用很少，好忘。所以这里记录下。方便日后查看。   </p>
-<p>消息转发我分2个阶段。   </p>
-<h5 id="u4E00__u8FD9_u4E2A_u6D88_u606F_u7531_u81EA_u5DF1_uFF08_u672C_u7C7B_uFF09_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><a href="#u4E00__u8FD9_u4E2A_u6D88_u606F_u7531_u81EA_u5DF1_uFF08_u672C_u7C7B_uFF09_u6765_u54CD_u5E94_u9636_u6BB5_u3002" class="headerlink" title="一 这个消息由自己（本类）来响应阶段。"></a>一 这个消息由自己（本类）来响应阶段。</h5><ol>
-<li>当向一个A类发送未实现的消息时。A类会调用 + (BOOL)resolveInstanceMethod:(SEL)sel 这个方法，动态的添加一个Method来响应。（添加Method看下边代码）</li>
+		<h3 id="u524D_u8A00"><a href="#u524D_u8A00" class="headerlink" title="前言"></a>前言</h3><p>本人小白一个，带着兴趣学习反编译，什么都是爬博客新学习，写此博客只为方便记忆，当然如果能给读者带来收获那就更好了。不妥之处欢迎提出来。   </p>
+<h3 id="u8FBE_u5230_u76EE_u7684"><a href="#u8FBE_u5230_u76EE_u7684" class="headerlink" title="达到目的"></a>达到目的</h3><p>砸壳一个App并导出头文件</p>
+<h3 id="u53CD_u7F16_u8BD1_u6761_u4EF6"><a href="#u53CD_u7F16_u8BD1_u6761_u4EF6" class="headerlink" title="反编译条件"></a>反编译条件</h3><ol>
+<li>越狱设备。 （盘古）</li>
+<li>手机安装openSSH, 通过cydia就可以</li>
+<li>Clutch砸壳，通过sftp装到手机里，作用：砸包用。下载地址：<a href="https://github.com/KJCracks/Clutch/releases****" target="_blank" rel="external">https://github.com/KJCracks/Clutch/releases****</a></li>
+<li>class-dump 作用：砸好后的App导出所有头文件 下载地址：<a href="http://stevenygard.com/projects/class-dump/" target="_blank" rel="external">http://stevenygard.com/projects/class-dump/</a></li>
+<li>dumpdecrypted砸壳，未成功，原因不知道。但是过程值得参考。</li>
 </ol>
-<h5 id="u4E8C__u7531_u5176_u4ED6_u7C7B_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><a href="#u4E8C__u7531_u5176_u4ED6_u7C7B_u6765_u54CD_u5E94_u9636_u6BB5_u3002" class="headerlink" title="二 由其他类来响应阶段。"></a>二 由其他类来响应阶段。</h5><ol>
-<li>当 + (BOOL)resolveInstanceMethod:(SEL)sel 方法返回NO,就会调用 - (id)forwardingTargetForSelector:(SEL)aSelector 方法，询问是否交给其他类响应此消息。（添加看下边代码）  </li>
-<li>如果 - (id)forwardingTargetForSelector:(SEL)aSelector 返回nil,调用 - (NSMethodSignature <em>)methodSignatureForSelector:(SEL)aSelector 先进行方法签名，再调用 - (void)forwardInvocation:(NSInvocation </em>)anInvocation 方法进行转发。</li>
-</ol>
-<hr>
-<p>图片来自 <a href="http://www.cocoachina.com/ios/20151208/14595.html" target="_blank" rel="external">http://www.cocoachina.com/ios/20151208/14595.html</a></p>
-<p><img src="http://cc.cocimg.com/api/uploads/20151207/1449456989807643.png" alt="Resize icon"> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;void run (id self, SEL _cmd)&#10;&#123;&#10;    NSLog(@&#34;%@ %s&#34;, self, sel_getName(_cmd));&#10;&#125;&#10;&#10;+ (BOOL)resolveInstanceMethod:(SEL)sel&#10;&#123;&#10;//    if (sel == @selector(run)) &#123;&#10;//        class_addMethod(self, sel, (IMP)run, &#34;v@:&#34;);&#10;//        return YES;&#10;//    &#125;&#10;    return [super resolveInstanceMethod:sel];&#10;&#125;&#10;&#10;&#10;- (id)forwardingTargetForSelector:(SEL)aSelector&#10;&#123;&#10;//    if (aSelector == @selector(run)) &#123;&#10;//        return FWCar.new;&#10;//    &#125;&#10;    return [super forwardingTargetForSelector:aSelector];&#10;&#125;&#10;&#10;- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector&#10;&#123;&#10;    NSString *sel = NSStringFromSelector(aSelector);&#10;    if ([sel isEqualToString:@&#34;run&#34;]) &#123;&#10;        // &#20026;&#36716;&#21457;&#26041;&#27861;&#25163;&#21160;&#29983;&#25104;&#31614;&#21517;&#10;        return [NSMethodSignature signatureWithObjCTypes:&#34;v@:&#34;];&#10;    &#125;&#10;    return [super methodSignatureForSelector:aSelector];&#10;&#125;&#10;&#10;- (void)forwardInvocation:(NSInvocation *)anInvocation&#10;&#123;&#10;    SEL sel = anInvocation.selector;&#10;    FWCar *car = FWCar.new;&#10;    if ([car respondsToSelector:sel]) &#123;&#10;        // &#21796;&#37266;&#36825;&#20010;&#26041;&#27861;&#10;        [anInvocation invokeWithTarget:car];&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u5B9E_u73B0"><a href="#u5B9E_u73B0" class="headerlink" title="实现"></a>实现</h3><p>反编译条件步骤1 2 略<br>3 将手机与电脑连接到同一个wifi下。下载Clutch,用sftp导入到手机 /usr/bin目录下，然后砸壳并导出砸壳后的ipa</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#36830;&#25509;&#21040;&#20320;&#30340;&#25163;&#26426;&#24182;&#36755;&#20837;&#40664;&#35748;&#23494;&#30721; alpine&#10;sftp root@192.168.199.232&#10;// &#36827;&#20837;&#21040;&#25351;&#23450;&#30446;&#24405;&#10;cd /usr/bin&#10;// Clutch&#23548;&#20837;&#21040;&#25163;&#26426;&#10;put &#30005;&#33041;Clutch&#30446;&#24405;&#10;&#10;ssh &#36830;&#25509;&#21040;&#25163;&#26426;&#10;ssh root@192.168.199.232&#10;// &#25104;&#21151;&#20043;&#21518;&#33719;&#21462;&#25163;&#26426;&#37324;&#25152;&#26377;App&#21015;&#34920;&#10;Clutch -i&#10;// &#30776;&#22771;&#26576;&#20010;app 98&#20026;&#26576;&#20010;app&#24207;&#21495;&#10;Clutch -d 98&#10;// &#30776;&#22771;&#25104;&#21151;&#21518;&#20250;&#26377;ipa&#30446;&#24405;&#65292;&#22914;&#19979;&#10;DONE: /private/var/mobile/Documents/Dumped/com.tencent.xin-iOS7.0-(Clutch-2.0.2).ipa&#10;// &#29992;sftp&#23558;com.tencent.xin-iOS7.0-(Clutch-2.0.2).ipa&#19979;&#36733;&#21040;&#20320;&#30340;&#30005;&#33041;&#10;get com.tencent.xin-iOS7.0-(Clutch-2.0.2).ipa&#30446;&#24405; &#26412;&#22320;&#30005;&#33041;&#30446;&#24405;&#10;```   &#10;4 class-dump&#23548;&#20986;&#22836;&#25991;&#20214;   &#10;&#19979;&#36733;class-dump&#25918;&#21040;&#30005;&#33041; /usr/local/bin&#30446;&#24405;&#19979;   &#10;&#23558;com.tencent.xin-iOS7.0-(Clutch-2.0.2).ipa&#25913;&#25104;com.tencent.xin-iOS7.0-(Clutch-2.0.2).zip,&#35299;&#21387;&#24182;&#25214;&#21040;App&#20108;&#36827;&#21046;&#25991;&#20214;WeChat.app&#65292;&#30446;&#24405;&#22914;&#19979;&#65306;com.tencent.xin-iOS7.0-(Clutch-2.0.2)/Payload/var/containers/Bundle/Application/7AB7AF2A-0EA3-4AFA-8875-F1F72ECE3D4C/WeChat.app</span><br></pre></td></tr></table></figure>
+<p>执行命令，所有.h文件就在数目里了<br>class  dump -H WeChat.app目录 -o 输出目录<br>```</p>
+<p>5 dumpdecrypted 下载到电脑，编译dumpdecrypted.dylib，参考 <a href="http://www.cnblogs.com/ludashi/p/5725743.html" target="_blank" rel="external">http://www.cnblogs.com/ludashi/p/5725743.html</a> 谢谢作者，只是我按照操作的时候有2个地方已经不一样了，<br>1 “微信”App所在的目录： ps -e | grep /var/mobile命令我并没有获取到。实际目录在 /var/containers/Bundle/Application/BA106D6C-2C6C-45CD-85F7-352CD277BC4E/WeChat.app/WeChat<br>那么多应用，怎么确定微信应用？ 1&gt; 手机删除微信并重新下载安装（为了后续根据时间查找）2&gt; 越狱手机安装iFile应用（PP助手越狱版安装），打开iFile,点击下边地球图标，网页服务器，电脑登录服务器，进入/var/containers/Bundle/Application目录，根据微信安装时间查找微信App目录，并记录此目录。</p>
+<p>2 微信沙盒目录 /var/mobile/Containers/Data/Application/4165A234-2E6D-4BAA-A352-D4ABDC9C24A4/Documents，查找方法同上。</p>
+<p>3 dumpdecrypted.dylib放到/var/mobile/Containers/Data/Application/4165A234-2E6D-4BAA-A352-D4ABDC9C24A4/Documents目录下</p>
+<p>3 砸壳，失败了。DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib /var/containers/Bundle/Application/BA106D6C-2C6C-45CD-85F7-352CD277BC4E/WeChat.app/WeChat<br>不知道什么原因，看dumpdecrypted GitHub已经有4年未更新了。郁闷。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -110,7 +115,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2016/03/22/“iOS消息转发”/" data-title="“iOS消息转发” | 小伍" data-tsina="null" class="share clearfix">
+  <div data-url="http://yoursite.com/2016/07/29/iOS逆向开发砸壳/" data-title="iOS逆向开发砸壳 | 小伍" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -120,18 +125,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/03/22/Markdown学习/" title="Markdown学习">
+ <a href="/2016/11/28/StoryBoard 本地化一种方式/" title="“StoryBoard 本地化一种方式”">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  Markdown学习</span>
+  “StoryBoard 本地化一种方式”</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/03/08/面试题总结/"  title="面试题总结">
+<a href="/2016/07/05/C语言学习/"  title="“C语言学习”">
  <strong>NEXT:</strong><br/> 
- <span>面试题总结
+ <span>“C语言学习”
 </span>
 </a>
 </div>
@@ -148,7 +153,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
-  <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#u4E00__u8FD9_u4E2A_u6D88_u606F_u7531_u81EA_u5DF1_uFF08_u672C_u7C7B_uFF09_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><span class="toc-number">1.</span> <span class="toc-text">一 这个消息由自己（本类）来响应阶段。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#u4E8C__u7531_u5176_u4ED6_u7C7B_u6765_u54CD_u5E94_u9636_u6BB5_u3002"><span class="toc-number">2.</span> <span class="toc-text">二 由其他类来响应阶段。</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u524D_u8A00"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u8FBE_u5230_u76EE_u7684"><span class="toc-number">2.</span> <span class="toc-text">达到目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u53CD_u7F16_u8BD1_u6761_u4EF6"><span class="toc-number">3.</span> <span class="toc-text">反编译条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5B9E_u73B0"><span class="toc-number">4.</span> <span class="toc-text">实现</span></a></li></ol>
   </div>
 
 <div id="asidepart">
