@@ -14,6 +14,22 @@
 					<!-- <string>https://daokangpublic.oss-cn-beijing.aliyuncs.com/tpybxproject-pubsit/msplatform_uat/MP/app/iOS/survey/1.1.3/LiveneoMobileSurveyTaiBao.ipa</string> -->
 					<string>http://kongfanwu.github.io/app/LiveneoMobileSurvey.ipa</string>
 				</dict>
+				<dict>
+					<key>kind</key>
+					<string>full-size-image</string>
+					<key>needs-shine</key>
+					<true/>
+					<key>url</key>
+					<string>https://kongfanwu.github.io/app/icon512*512.png</string>
+				</dict>
+				<dict>
+					<key>kind</key>
+					<string>display-image</string>
+					<key>needs-shine</key>
+					<true/>
+					<key>url</key>
+					<string>https://kongfanwu.github.io/app/icon57*57.png</string>
+				</dict>
 			</array>
 			<key>metadata</key>
 			<dict>
