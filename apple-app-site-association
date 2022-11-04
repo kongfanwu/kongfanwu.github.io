@@ -3,8 +3,8 @@
         "apps": [],
         "details": [
             {
-                "appID": "346QFZZACH.com.shendeng.zhineng",
-                "paths": [ "*"]
+                "appID": "PS2QJS9X99.com.hellochat.hellochatqa2",
+                "paths": [ "/hellochat/*"]
             }
         ]
     }
