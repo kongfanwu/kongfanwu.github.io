@@ -1,0 +1,1 @@
+import{_ as s,o as t,c as o,g as a,t as r,F as n}from"./index-3089f835.js";const c={};function l(e,p,u,m,i,d){return t(),o(n,null,[a("div",null," name:"+r(e.$route.params.username),1),a("div",null," age:"+r(e.$route.params.age),1)],64)}const f=s(c,[["render",l]]);export{f as default};
