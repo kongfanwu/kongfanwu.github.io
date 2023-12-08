@@ -7,6 +7,14 @@
 
     <script>
         function initiateLightbox() {
+            var data = "null";
+
+            const urlParams = new URLSearchParams(window.location.search);
+            data = urlParams.get('token');
+
+            document.getElementById('token').value = data;
+            transactionToken = data;
+            return false;
             var tokenRequest = {
                 ssl_first_name: document.getElementById('name').value,
                 ssl_last_name: document.getElementById('lastname').value,
