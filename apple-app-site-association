@@ -1,0 +1,21 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "74576NZUVR.com.wymd.jyhp",
+                "paths": [
+                    "/jyhp/*",
+                    "/jyhp/wechat/*"
+                ]
+            },
+            {
+                "appID": "74576NZUVR.com.wymd.jyhd",
+                "paths": [
+                    "/jyhd/*",
+                    "/jyhd/wechat/*"
+                ]
+            }
+        ]
+    }
+}
