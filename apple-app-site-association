@@ -1,21 +1,15 @@
 {
-    "applinks": {
-        "apps": [],
-        "details": [
-            {
-                "appID": "74576NZUVR.com.wymd.jyhp",
-                "paths": [
-                    "/jyhp/*",
-                    "/jyhp/wechat/*"
-                ]
-            },
-            {
-                "appID": "74576NZUVR.com.wymd.jyhd",
-                "paths": [
-                    "/jyhd/*",
-                    "/jyhd/wechat/*"
-                ]
-            }
-        ]
-    }
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": ["Z9L725F76G.com.eidlink.wlsft"],
+        "paths": ["*"]
+      }
+    ]
+  },
+  "appclips": {
+    // App Clip 的  Bundle Identifier
+    "apps": ["Z9L725F76G.com.eidlink.wlsft.Clip"]
+  }
 }
